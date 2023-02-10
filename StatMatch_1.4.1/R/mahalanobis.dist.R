@@ -12,7 +12,7 @@ mahalanobis.dist <- function(data.x, data.y=NULL, vc=NULL){
     ny <- nrow(yy)
     md <- matrix(0,nrow(xx), ny)
     for(i in 1:ny){
-        md[,i] <- mahalanobis(xx, yy[i,], cov=vc)
+        md[,i] <- mahalanobis(xx, yy[i,], cov=vc, tol=1e-50)
     }
     if(is.null(data.y)) dimnames(md) <- list(rownames(data.x), rownames(data.x))
     else dimnames(md) <- list(rownames(data.x), rownames(data.y))
